@@ -1,0 +1,537 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% My Own template for my Academic Curriculum Vitae: a short and clean version easily readable.
+%
+% Authored By André Luis Albuquerque dos Reis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[10pt,a4paper]{article}
+
+%---------------------
+% Loading Packages
+%---------------------
+
+%--- non-ASCII characters
+\usepackage[utf8]{inputenc}
+\usepackage[english,portuguese]{babel}
+\usepackage[TU]{fontenc}
+%--- Icons 
+\usepackage{fontawesome5}
+\usepackage{academicons}
+%--- For fancy and multipage tables
+\usepackage{tabularx}
+%--- For new environments
+\usepackage{environ}
+%--- Manage dates and times
+\usepackage{datetime}
+%--- Set the page margins
+\usepackage{geometry}
+%--- To get the total page numbers
+\usepackage{lastpage}
+%--- Control spacing in enumerates
+\usepackage{enumitem}
+%--- Use custom colors
+\usepackage[usenames,dvipsnames]{xcolor}
+%--- Configure section titles
+\usepackage{titlesec}
+%--- Fancy header configuration
+\usepackage{fancyhdr}
+%--- Control PDF metadata and links
+\usepackage{hyperref}
+%--- Disable hyphenation
+\usepackage[none]{hyphenat}
+
+%%%%% End loading packages
+
+%------------------------------------
+% Begin defining some new commmands
+%------------------------------------
+
+%--- Defining simple commands for institutions
+\newcommand{\UERJ}{Universidade do Estado do Rio de Janeiro (UERJ)}
+\newcommand{\CBPF}{Centro Brasileiro de Pesquisas F\'{i}sicas (CBPF)}
+\newcommand{\ON}{Observat\'{o}rio Nacional (ON)}
+\newcommand{\UENF}{Universidade Estadual do Norte Fluminense (UENF)}
+\newcommand{\DGAP}{Departamento de Geologia Aplicada}
+\newcommand{\FGEL}{Faculdade de Geologia}
+\newcommand{\CNPq}{Centro Nacional de Desenvolvimento Científico e Tecnológico (CNPq)}
+\newcommand{\FAPERJ}{Fundação de Amparo à Pesquisa do Rio de Janeiro (FAPERJ)}
+\newcommand{\UFF}{Universidade Federal Fluminense (UFF)}
+\newcommand{\PUCrio}{Pontifícia Universidade Católica do Rio de Janeiro (PUC-Rio)}
+
+%--- Defining commands for general information
+\newcommand{\Title}{Curriculum Vit\ae}
+\newcommand{\Firstname}{Andr\'{e} Luis}
+\newcommand{\Middlename}{Albuquerque}
+\newcommand{\Lastname}{Reis}
+\newcommand{\Initials}{ALA}
+\newcommand{\Fullname}{\Firstname\ \Middlename\ \Lastname}
+\newcommand{\NameAbbreviation}{André L. A. Reis}
+\newcommand{\CiteMe}{\textbf{\Lastname , \Initials}\*} % for citation
+\newcommand{\PersonalEmail}{reisandreluis@gmail.com}
+\newcommand{\ResearchGroup}{pinga-lab.org/people/andre}
+\newcommand{\GitHubProfile}{@andrelreis}
+\newcommand{\ORCID}{0000-0002-2225-5106}
+\newcommand{\LattesID}{lattes.cnpq.br/1075610796165589}
+
+%--- Defining commands for citations
+\newcommand{\Vand}{Oliveira Jr, VC}
+\newcommand{\Elder}{Yokoyama, E}
+\newcommand{\AC}{Bruno, AC}
+\newcommand{\Joao}{Pereira, JMB}
+\newcommand{\Jeff}{Araujo, JFDF}
+\newcommand{\Takahashi}{Takahashi, D}
+\newcommand{\Val}{Barbosa, VCF}
+\newcommand{\Medina}{Medina, CD}
+\newcommand{\Fredy}{Osorio, FG}
+\newcommand{\Cleanio}{Luz-Lima, C}
+\newcommand{\Falco}{De Falco, A}
+\newcommand{\Caique}{Lima, CDA}
+\newcommand{\JoaoFelipe}{Silva, JFC}
+\newcommand{\Lanna}{Sinimbu, LIM}
+\newcommand{\Frederico}{Gutierrez, FV}
+\newcommand{\Walmir}{Pottker, WE}
+\newcommand{\LaPorta}{La Porta, FA}
+\newcommand{\Mendoza}{Mendoza, LAF}
+\newcommand{\Tahir}{Tahir}
+\newcommand{\Tommaso}{Del Rosso, T}
+\newcommand{\Jesana}{Loreto, JM}
+\newcommand{\Renan}{Loreto, RP}
+\newcommand{\Cilene}{Labre, C}
+\newcommand{\Chaves}{Chaves, JF}
+\newcommand{\Merino}{Merino, ILC}
+\newcommand{\Saitovitch}{Saitovitch-Baggio, E}
+\newcommand{\Guillermo}{Solorzano, G}
+\newcommand{\Geronimo}{Perez, G}
+\newcommand{\Eloi}{Junior, EBM}
+\newcommand{\Amanda}{Santo, AF}
+\newcommand{\Angela}{Correa, AAP}
+\newcommand{\Pacheco}{Pacheco, MAC}
+\newcommand{\Giancarlo}{Brito, GE}
+\newcommand{\AraujoWWR}{Araujo, WWR}
+
+
+
+%-------------------------
+% Template configuration
+%-------------------------
+
+%--- Setting main font
+\renewcommand{\familydefault}{\sfdefault}
+
+%--- Geometry of the CV
+\geometry{%
+  margin=12.0mm,
+  headsep=0mm,
+  headheight=0mm,
+  footskip=5mm,
+  includehead=true,
+  includefoot=true
+}
+
+%--- Custom colors
+\definecolor{mediumgray}{gray}{0.5}
+\definecolor{lightgray}{gray}{0.9}
+\definecolor{mediumblue}{HTML}{4233ff}
+\definecolor{lightblue}{HTML}{33ffe9}
+\definecolor{brown}{HTML}{6e2c00}
+\definecolor{lightbrown}{HTML}{eb984e}
+
+%--- No indentation
+\setlength\parindent{0cm}
+
+%--- Increase the line spacing
+\renewcommand{\baselinestretch}{1.1}
+%--- and the spacing between rows in tables
+\renewcommand{\arraystretch}{1.25}
+
+%--- Remove space between items in itemize and enumerate
+\setlist{nosep}
+
+%--- Customizing the style of the sections
+\titleformat{\section} % command
+   {\normalfont\Large\mdseries} % format
+  {} % label
+  {1pt} % sep
+  {} % before-code
+  [\titlerule] % after-code
+\titlespacing*{\section}
+  {0pt} % left pad
+  {0.1cm} % before
+  {0cm} % after
+  
+%--- Hyperlinks configuration
+\hypersetup{
+           colorlinks=true,
+           linkcolor=mediumblue,
+           allcolors=mediumblue,
+           pdftitle={\NameAbbreviation{} CV},
+           pdfauthor={\NameAbbreviation},
+}
+
+%--- Footer Style
+\newcommand{\Separator}{\hspace{3pt}|\hspace{3pt}}
+\newcommand{\FooterFont}{\footnotesize\color{mediumgray}}
+\pagestyle{fancy}
+\fancyhf{}
+\lfoot{%
+  \FooterFont{}
+  \NameAbbreviation{}
+  \Separator{}
+  \Title{}
+}
+\rfoot{%
+  \FooterFont{}
+  Last updated: \monthyear\today{}
+  \Separator{}
+  \thepage\space of \space \pageref*{LastPage}
+}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{1pt}
+\preto{\footrule}{\color{mediumgray}}
+
+\newdateformat{monthyear}{\monthname[\THEMONTH], \THEYEAR}
+
+%--- Defining new entries for CV in a tabular form
+
+\newcommand{\pad}{\vspace{0.2cm}}
+\NewEnviron{entries}{
+    \pad
+    \begin{tabularx}{\textwidth}{p{0.12\textwidth}p{0.82\textwidth}}
+      \BODY{}
+    \pad
+    \end{tabularx}
+}
+
+%--- General macros
+
+\newcommand{\Duration}[2]{\fontsize{10pt}{0}\selectfont \textsf{#1 - #2}}
+\newcommand{\Website}[1]{\href{https://#1}{#1}}
+\newcommand{\DOI}[1]{DOI: \href{https://doi.org/#1}{#1}}
+\newcommand{\GitHub}[1]{GitHub: \href{https://github.com/#1}{#1}}
+
+%--- New command multiline text
+
+\newcommand{\multiline}[3]{{#1} & {\textbf{#2} \newline {#3}}}
+
+%--- Other commands for entries
+
+%-----{\paper}{Year}{{<title>},{<authorship>},{<journal>},{DOI}}
+\newcommand{\paper}[5]{%
+    {#1} & 
+    {\textbf{#2} \newline 
+    {#3} \newline 
+    \textit{#4}, \DOI{#5}}}
+    
+%-----{talk}{Year}{{<title>},{<conference>},{<type>},{DOI}}
+\newcommand{\talk}[5]{%
+                      {#1} & 
+                      {\textbf{#2} \newline 
+                      {#3}, \textit{#4}, \DOI{#5}}}
+
+%%%%%%%%%%%%%% End Template configurations
+
+%-------------------------------
+% The beggining of the document
+%-------------------------------
+\begin{document}
+
+%------ Begin Header
+\begin{minipage}[t]{0.5\textwidth}
+  {\fontsize{20pt}{0}\selectfont\Fullname}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+  \begin{flushright}
+    \Title{}
+  \end{flushright}
+\end{minipage}
+\\[-0.1cm]
+\textcolor{black}{\rule{\textwidth}{2pt}}
+\begin{minipage}[t]{0.5\textwidth}
+   \footnotesize \parbox{0.04\textwidth}{\faEnvelope} Email: \href{mailto:\PersonalEmail}{\PersonalEmail}
+  \\
+  \footnotesize \parbox{0.04\textwidth}{\aiOrcid} ORCID: \href{https://orcid.org/\ORCID}{\ORCID}
+  \\
+  \footnotesize \parbox{0.04\textwidth}{\faGithub} GitHub: \href{https://github.com/andrelreis}{\GitHubProfile}
+  \\
+  \footnotesize \parbox{0.04\textwidth}{\aiLattes} LattesID: \href{http://lattes.cnpq.br/1075610796165589}{\LattesID}
+  \\
+  \footnotesize \parbox{0.04\textwidth}{\faUsers} Research Group: \href{\ResearchGroup}{\ResearchGroup}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+  \begin{flushright}
+  \DGAP
+  \\
+  \FGEL
+  \\
+  \UERJ
+  \\
+   Rua São Francisco Xavier, 524. Rio de Janeiro - RJ. Brazil
+  \end{flushright}
+\end{minipage}
+%------- End Header
+
+\vspace{0.3cm}
+
+%------- CV's Body
+\section{Brief Description}
+\vspace{0.3cm}
+I am currently an Adjunct Professor in the Department of Applied Geology at the Geology School of Rio de Janeiro State University. I am also leading an Exploration Geophysics Laboratory. My research focuses on developing methods for processing and interpreting potential fields. I am experienced in applying Scanning Magnetic Microscopy to characterize magnetic materials and rock samples, proposing new technologies in Paleomagnetism and Rock magnetism. I have interests in Computational and Theoretical Geophysics.
+
+\section{Education}
+
+\begin{entries}
+    \Duration{2016}{2020} & \textbf{PhD in Geophysics}, \ON, Brazil 
+    \\
+    \Duration{2014}{2016} & \textbf{MSc in Geophysics}, \ON, Brazil 
+    \\
+    \Duration{2007}{2012} & \textbf{BSc in Physics}, \UERJ, Brazil 
+\end{entries}
+
+\section{Work}
+
+\begin{entries}
+    \Duration{2021}{on} & \textbf{Adjunct Professor}, \UERJ, Brazil
+    \\
+    \Duration{2020}{2021} & \textbf{Postdoctoral Researcher}, \ON, Brazil
+    \\
+    \Duration{2013}{2014} & \textbf{Technician}, \UENF, Brazil
+    \\
+    \Duration{2007}{2009} & \textbf{Scientific Initiation}, \CBPF, Brazil
+
+\end{entries}
+
+\section{Awards and Scholarships}
+
+\begin{entries}
+    \multiline{\Duration{2020}{2021}}
+    {Postdoctoral Fellowship}
+    {\CNPq \newline \ON, Brazil}
+    \\
+    \multiline{\Duration{2016}{2020}}
+    {PhD Scholarship}
+    {\CNPq \newline \ON, Brazil}
+    \\
+    \multiline{\Duration{2014}{2016}}
+    {MSc Scholarship}
+    {\CNPq \newline \ON, Brazil}
+    \\
+    \multiline{\Duration{2007}{2009}}
+    {Scientific Initiation Scholarship}
+    {\CNPq \newline \UERJ, Brazil}
+\end{entries}
+
+\section{Educational Resources}
+
+\begin{entries}
+    \Duration{2021}{on} & \textbf{Geofísica I},\GitHub{andrelreis/geofisica1}
+    \\
+    \Duration{2021}{on} & \textbf{Geofísica II}, \GitHub{andrelreis/geofisica2}
+    \\
+    \Duration{2023}{on} & \textbf{Introdução ao Processamento Sísmico}, \GitHub{andrelreis/processamento-sismico}
+    \\
+    \Duration{2021}{on} & \textbf{Inversão de Dados Geofísicos}, \GitHub{andrelreis/introducao-inversao}
+    \\
+    \Duration{2021}{2021} & \textbf{Métodos Potenciais}, \GitHub{andrelreis/metodos-potenciais}
+\end{entries}
+
+\section{Projects and Grants}
+
+\begin{entries}
+    \multiline{2024}
+    {Métodos computacionalmente eficientes para a descrição magnética de amostras de rocha em escala micrométrica}
+    {\FAPERJ}
+\end{entries}
+
+\section{Conference Participations}
+
+\begin{entries}
+    \multiline{2019}
+    {Equivalent layer technique for estimating magnetization direction}
+    {SEG Annual Meeting, San Antonio, TX - USA}
+    \\
+    \multiline{2017}
+    {SED for optimal acquisition design and sensor-to-sample distance applied to scanning magnetic microscopy}
+    {Bi-annual meeting of the Latinmag, Querétaro - México}
+    \\
+    \multiline{2016}
+    {Impact of the sensor area, acquisition design and position noise on the estimation of the magnetization distribution within a rectangular rock sample}
+    {AGU Fall Meeting, San Francisco, CA - USA}    
+\end{entries}
+
+\section{Presentations}
+
+\begin{entries}
+    \talk{2023}
+    {Teoria do Potencial Aplicada: uma contribuição para a descrição de rochas ígneas em bacias sedimentares}
+    {X SAGEO-UERJ}
+    {Invited Speaker}
+    {10.6084/m9.figshare.24156039.v1}
+    \\
+    \talk{2020}
+    {Inversão de dados magnéticos para estimar as três componentes do campo}
+    {Jornada PCI-ON}
+    {Invited Speaker}
+    {10.6084/m9.figshare.13256657.v1}
+    \\
+    \talk{2019}
+    {Equivalent layer technique for estimating magnetization direction}
+    {SEG Annual Meeting}
+    {Oral presentation}
+    {10.6084/m9.figshare.9899321.v1}
+    \\
+    \talk{2017}
+    {SED for optimal acquisition design and sensor-to-sample distance applied to Scanning Magnetic Microscopy}
+    {Bi-annual Meeting of the Latinmag}
+    {Oral presentation}
+    {10.6084/m9.figshare.9899282.v1}
+    \\
+    \talk{2016}
+    {Impact of the sensor area, acquisition design and position noise on the estimation of the magnetization distribution within a rectangular rock sample}
+    {AGU Fall Meeting}
+    {Poster presentation}
+    {10.6084/m9.figshare.9899213.v1}
+\end{entries}
+
+\section{Peer-reviewed Published Papers}
+
+\begin{entries}
+    \paper{2023}
+    {Computational aspects of the equivalent-layer technique: review}
+    {\Vand; \Takahashi; \CiteMe; \Val}
+    {Frontiers in Earth Sciences}
+    {10.3389/feart.2023.1253148}
+    \\
+    \paper{2023}
+    {Construction of a Hall effect scanning magnetic microscope using permanent magnets for characterization of rock samples}
+    {\Jeff; \CiteMe; \Elder; \Medina; \Fredy; \Cleanio; \Falco; \Caique; \JoaoFelipe; \Lanna; \Frederico; \Walmir; \LaPorta; \Mendoza; \Tahir; \Tommaso; \AC }
+    {Journal of Magnetism and Magnetic Materials}
+    {10.1016/j.jmmm.2022.170304}
+    \\
+    \paper{2022}
+    {Spinel nanoparticles characterization by inverting scanning magnetic microscope maps}
+    {\Jesana; \CiteMe; \Renan; \Cilene; \Chaves; \Caique; \AC; \Cleanio; \Merino; \Saitovitch; \Guillermo; \Jeff}
+    {Ceramics International}
+    {10.1016/j.ceramint.2022.04.149}
+    \\
+    \paper{2021}
+    {Detecting surface-breaking flaws with a Hall effect gradiometric sensor}
+    {\Eloi; \Fredy; \Frederico; \Tommaso; \Tahir; \Mendoza; \Cleanio; \Elder; \CiteMe; \Geronimo; \Jesana; \AC; \Jeff}
+    {Measurement}
+    {10.1016/j.measurement.2020.108808}
+    \\
+    \paper{2020}
+    {Generalized positivity constraint on magnetic equivalent layers}
+    {\CiteMe; \Vand; \Val}
+    {Geophysics}
+    {10.1190/GEO2019-0706.1}
+    \\
+    \paper{2019}
+    {Characterizing Complex Mineral Structures in Thin Sections of Geological Samples with a Scanning Hall Effect Microscope}
+    {\Jeff; \CiteMe; \Vand; \Amanda; \Cleanio; \Elder; \Mendoza; \Joao; \AC}
+    {Sensors}
+    {10.3390/s19071636}
+    \\
+    \paper{2019}
+    {Scanning Magnetic Microscope Using a Gradiometric Configuration for Characterization of Rock Samples}
+    {\Jeff; \CiteMe; \Angela; \Elder; \Vand; \Mendoza; \Pacheco; \Cleanio; \Amanda; \Fredy; \Giancarlo; \AraujoWWR; \Tahir; \AC; \Tommaso}
+    {Materials}
+    {10.3390/ma12244154}
+    \\
+    \paper{2016}
+    {Estimating the magnetization distribution within rectangular rock samples}
+    {\CiteMe; \Vand; \Elder; \AC; \Joao}
+    {Geochemistry, Geophysics, Geosystems}
+    {10.1002/2016GC006329}   
+\end{entries}
+
+\section{Defense Committee Participations}
+
+\begin{entries}
+    \multiline{2023}
+    {Lanna Isabely Morais Sinimbu}
+    {MSc defense \newline \PUCrio}
+    \\
+    \multiline{2023}
+    {Victor Lebre Fiaux Rodrigues}
+    {MSc defense \newline \UERJ}
+    \\
+    \multiline{2023}
+    {Leonardo Campos João}
+    {MSc defense \newline \UERJ}
+    \\
+    \multiline{2023}
+    {Renato Mota Xavier de Meneses}
+    {PhD defense \newline \UFF}
+    \\
+    \multiline{2023}
+    {Victor Lebre Fiaux Rodrigues}
+    {MSc qualifying \newline \UERJ}
+    \\
+    \multiline{2022}
+    {Rômulo Rodrigues de Oliveira}
+    {MSc defense \newline \UFF}
+    \\
+    \multiline{2022}
+    {Guilherme Zequini Gomes}
+    {MSc defense \newline \UERJ}
+    \\
+    \multiline{2021}
+    {Bruno Lima de Freitas}
+    {Undergraduate thesis defense \newline \UFF}
+    \\
+    \multiline{2020}
+    {Allan Soares Ramalho}
+    {Undergraduate thesis defense \newline \UFF}
+    \\
+    \multiline{2020}
+    {Shayane Paes Gonzalez}
+    {PhD qualifying \newline \UFF}
+\end{entries}
+
+\section{Technical Skills}
+
+\begin{entries}
+    \textbf{Programming} & Python, FORTRAN
+    \\
+    \textbf{Markup} & Markdown, LaTeX
+    \\
+    \textbf{Graphics} & InkScape, GIMP
+    \\
+\end{entries}
+
+\section{Languages}
+
+\begin{entries}
+    \textbf{Portuguese} & Native
+    \\
+    \textbf{English} & Advanced
+    \\
+    \textbf{Italian} & Begginer
+    \\
+    \textbf{Spanish} & Begginer
+\end{entries}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
